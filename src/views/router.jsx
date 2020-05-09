@@ -30,9 +30,9 @@ const Root = ({}, { route }) => {
 export default (props) => {
   const routes = [
     {
-      path: "/login",
+      path: "/demo2",
       component: Loadable({
-        loader: () => import("./routes/Login"),
+        loader: () => import("./routes/Demo"),
         loading,
         delay,
       }),
@@ -41,9 +41,9 @@ export default (props) => {
       component: Root.bind(this, props),
       routes: [
         {
-          path: "/home",
+          path: "/demo",
           component: Loadable({
-            loader: () => import("./routes/Home"),
+            loader: () => import("./routes/Demo"),
             loading,
             delay,
           }),

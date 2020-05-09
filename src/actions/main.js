@@ -4,7 +4,7 @@ export const getInfo = (params) => {
   return request({
     url: "/info",
     options: {
-      method: "POST",
+      method: "GET",
       headers: "",
       data: params,
     },

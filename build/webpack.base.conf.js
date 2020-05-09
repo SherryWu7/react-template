@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -8,7 +9,7 @@ const webpackConfig = {
     app: "./src/index.jsx",
   },
   output: {
-    filename: "[name].bundle.js",
+    filename: "assets/js/[name].bundle.js",
     path: path.resolve(__dirname, "../dist"),
     // publicPath: "static",
   },
@@ -22,68 +23,12 @@ const webpackConfig = {
         use: "babel-loader",
         exclude: /node_modules/,
       },
-      {
-        test: /\.(css|less)$/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              modules: {
-                localIdentName: "[name]__[local]--[hash:base64:5]",
-              },
-            },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              // config: {
-              //   path: "../postcss.config.js",
-              // },
-              plugins: (loader) => [
-                require("postcss-import")({ root: loader.resourcePath }),
-                require("autoprefixer")({
-                  overrideBrowserslist: "last 5 version",
-                }),
-              ],
-            },
-          },
-          {
-            loader: "less-loader",
-            options: {
-              lessOptions: {
-                javascriptEnabled: true,
-              },
-            },
-          },
-        ],
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.(css|less)$/, // 针对 antd 的 按需加载 (antd的样式不能开启css modules)
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              modules: false,
-            },
-          },
-          {
-            loader: "less-loader",
-            options: {
-              lessOptions: {
-                javascriptEnabled: true,
-                // modifyVars: theme,
-              },
-            },
-          },
-        ],
-        include: /node_modules/,
-      },
     ],
   },
   plugins: [
+    new webpack.EnvironmentPlugin({
+      VERSION_ENV: process.env.VERSION_ENV,
+    }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
       {

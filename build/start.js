@@ -1,3 +1,5 @@
+require("../color");
+
 const webpack = require("webpack");
 const webpackDevServer = require("webpack-dev-server");
 const devWebpackConf = require("./webpack.dev.conf");

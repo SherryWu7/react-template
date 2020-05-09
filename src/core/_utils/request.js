@@ -1,11 +1,11 @@
 import axios from "axios";
-import env from "../../store/api";
+import { config as apiConfig } from "../../store/api";
 
 export default function request({ url, options, api }) {
   const { method, data, headers } = options;
   let config = {
     // withCredentials: false,
-    url: env.dev[api] + url,
+    url: apiConfig.api[apiConfig.env][api] + url,
     headers: headers || {
       "Content-Type": "application/json", // "Content-Type": "application/x-www-form-urlencoded"
     },

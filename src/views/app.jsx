@@ -8,20 +8,6 @@ import RootRouter from "./router";
 class App extends React.Component {
   render() {
     return (
-      // <>
-      //   <div className="webpack">我的第一个webpack项目</div>
-      //   <div className={styles.webpack}>我的第二个webpack项目</div>
-      //   <Button
-      //     type="primary"
-      //     onClick={() => {
-      //       window.less.modifyVars({
-      //         "@primary-color": "#c00",
-      //       });
-      //     }}
-      //   >
-      //     我是antd Button
-      //   </Button>
-      // </>
       <HashRouter basename="/">
         <ConfigProvider locale={zhCN}>
           <RootRouter />

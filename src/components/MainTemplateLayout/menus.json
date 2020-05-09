@@ -1,0 +1,25 @@
+[
+  {
+    "name": "首页",
+    "code": "1000"
+  },
+  {
+    "name": "List 列表",
+    "code": "2000",
+    "children": [
+      { "name": "简单列表", "code": "2001" },
+      { "name": "基础列表", "code": "2002" }
+    ]
+  },
+  {
+    "name": "Table 表格",
+    "code": "3000",
+    "children": [
+      {
+        "name": "基本用法",
+        "code": "3001",
+        "children": [{ "name": "JSX 风格的 API", "code": "30010" }]
+      }
+    ]
+  }
+]

@@ -1,4 +1,13 @@
-const api = require("./api.dev");
+const versionEnv = process.env.VERSION_ENV || "prod";
+
+let api = {};
+api.dev = require("./api.dev");
+api.sit = require("./api.sit");
+api.prod = require("./api.prod");
+
 module.exports = {
-  dev: api,
+  config: {
+    env: versionEnv,
+    api,
+  },
 };
